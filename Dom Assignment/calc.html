@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(80deg,
+            rgb(215, 201, 201),
+            rgb(22, 33, 33),
+            rgb(216, 194, 194));
+}
+
+.container {
+
+    border-radius: 10px;
+
+    width:480px;
+    height: 800px;
+    background: linear-gradient(0deg,
+            rgb(73, 8, 8),
+            rgb(0, 0, 0),
+            rgb(152, 2, 2));
+}
+
+#output {
+    height: 150px;
+    margin-top: 20px;
+    display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        
+        /* background: linear-gradient(45deg, rgb(5, 4, 4),
+        rgb(177, 35, 35),
+                rgb(48, 10, 10)); */
+        /* border-bottom: 5px solid rgba(8, 185, 155, 0.932); */
+        /* border-radius: 50px; */
+        font-size: 55px;
+        color: rgb(255, 255, 255);
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+    .blankScreen {
+        margin-top: 10px;
+    margin-bottom: -15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end;
+    width:480px;
+    height: 80px;
+    /* background: linear-gradient(45deg, rgb(5, 4, 4),
+    rgb(177, 35, 35),
+    rgb(48, 10, 10)); */
+    border-bottom: 5px solid rgba(0, 12, 10, 0.932);  
+    
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+}
+
+.buttonscontainer {
+    margin-top: 50px;    
+    justify-content: center;
+}
+
+
+button {
+    background: transparent;
+    width: 20px;
+    height: 20px;
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: rgb(105, 135, 164);
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    
+    border-radius: 20px;
+    /* border: 1px solid rgb(182, 114, 114); */
+    border: none;
+    margin: 10px;
+}
+
+.numbers {
+    /* background: linear-gradient(45deg,rgb(3, 74, 126),rgb(5, 42, 116),rgb(11, 14, 116)); */
+    color: wheat;
+
+}
+button:hover{
+
+    background: rgba(255, 0, 0, 0.937);
+    color: white;
+    font-weight: 10px;
+}
+.numbers:hover{
+    background: rgb(62, 58, 143);
+    color: white;
+    font-weight: 10px;
+}
+
+.divb {
+
+    display: flex;
+
+
+}
+
+
+
+.equalto {
+    width: 230px;
+    background: rgba(125, 25, 165, 0.496);
+    color: wheat;
+}
+.equalto:hover {
+    width: 230px;
+    background: rgb(183, 0, 255);
+    color: wheat;
+}
+
+.add {
+    margin-bottom: -100px;
+
+    height: 180px;
+    color: aliceblue;
+    background: rgba(255, 12, 12, 0.082);
+}
+
+.subtract {
+    color: aliceblue;
+    /* background: rgba(2, 2, 255, 0.627); */
+
+}
+.decimal{
+    color: wheat;
+    /* background: rgb(149, 51, 51); */
+}
+.clear,.divide,.multiply,.back{
+    /* background: rgb(163, 107, 48); */
+    /* border: rgb(68, 71, 63) 1px solid; */
+    border: none;
+}
+@keyframes big{
+    0%{
+        font-size: 18px;
+    }
+    100%{
+        font-size: 70px;
+    }
+}
+
+@keyframes small{
+    0%{
+        font-size: 55px;
+    }
+    100%{
+        font-size: 45px;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="output"> </div>
+      <div class="blankScreen"></div>
+
+    <div class="buttonscontainer">
+        <div class= " divb firstLine">
+            <button class="clear buttons">C</button>
+            <button class="divide buttons">/</button>
+            <button class="multiply buttons">*</button>
+            <button class="back buttons">⌫</button>
+
+        </div>
+         <div class= " divb secondLine">
+            <button class="seven numbers  buttons">7</button>
+            <button class="eight numbers  buttons">8</button>
+            <button class="nice numbers  buttons">9</button>
+            <button class="subtract  buttons">-</button>
+
+        </div>
+         
+        <div class= " divb thirdLine">
+            <button class="four numbers  buttons">4</button>
+            <button class="five numbers  buttons">5</button>
+            <button class="six numbers  buttons">6</button>
+            <button  rowspan="2" class="add buttons">+</button>
+
+            
+        </div>
+         <div class= " divb fourthLine">
+            <button class="one numbers buttons">1</button>
+            <button class="two numbers buttons">2</button>
+            <button class="three numbers buttons">3</button>
+
+        </div>
+         <div class= " divb fifthLine">
+          <button class="decimal buttons">.</button>
+          <button class="zero numbers buttons">0</button>
+          <button class="equalto buttons">=</button>
+
+
+        </div>
+         
+    </div>
+   
+    </div>
+  </body>
+  <script>
+// we will use console to do calculations and then we will reflect it's output in our screen
+//selector
+const result= document.querySelector(".blankScreen");
+const output = document.querySelector("#output");
+const keys = document.querySelectorAll("button");
+
+//eventlistener
+keys.forEach(key=>{
+    key.addEventListener("click",calculate);
+});
+// function calculate(){
+    // }
+    
+    function calculate(){
+
+    let buttonText = this.innerText;
+    buttonText
+    if(buttonText==="C"){
+       output.innerText = "";
+        result.innerText = "";
+        result.style.animation = "";
+        output.style.animation = "";
+        return;
+    }
+
+    if(buttonText === "⌫"){
+        output.textContent = output.textContent.substr(0,output.textContent.length-1);
+        return;
+    }
+
+    if(buttonText === "="){
+        result.innerText = eval(output.innerText);
+        result.style.animation = "big 0.5s ease-in-out";
+        output.style.animation = "small 0.5s ease-in-out";
+        result.style.animationFillMode = "forwards";
+        output.style.animationFillMode = "forwards";
+    }
+
+    else{
+        output.textContent += buttonText;
+        return;
+    }
+
+  
+}
+
+  </script>
+</html>
