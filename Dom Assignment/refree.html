@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #safeTimer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 50px;
+            color:  red;
+        }
+        button{
+            font-size: 40px;
+            border-radius: 40px;
+            border:  none;
+            background: yellow;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="safeTimer">
+        <h2> Timer</h2>
+        <p id="safeTimerDisplay">00:00</p>
+        <button onclick="timer()"> Start</button>
+        </div>
+</body>
+<script>
+
+    function timer(){
+    var sec = 5;
+    var timer = setInterval(function(){
+        document.getElementById('safeTimerDisplay').innerHTML='00:'+`0${sec}`;
+        sec--;
+        if (sec < 1) {
+            go()
+            clearInterval(timer);
+            stop()
+        }
+    }, 1000);
+}
+function stop(){
+    document.querySelector("button").innerText="Replay"
+}
+function go(){
+    document.querySelector("#safeTimerDisplay").innerText="Go"
+}
+
+</script>
+</html>
