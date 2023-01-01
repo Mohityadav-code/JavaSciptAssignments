@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <button onclick="add()">+</button>
+    </nav>
+    <div class="list">
+        <ul>
+
+        </ul>
+    </div>
+</body>
+<script>
+    function add() {
+        var x = document.querySelector("ul")
+        var input = prompt("Enter task you want to add")
+        var elem = document.createElement("li")
+        var text = document.createTextNode(input)
+        var button= document.createElement("button")
+        var textforbutton = document.createTextNode("Remove")
+        x.append(elem)
+        elem.append(text)  
+        button.append(textforbutton)
+        elem.append(button)
+        li.setAttribute(id , da)
+        button.setAttribute(onclick , Remove())
+        button.setAttribute('disabled', '');
+    }
+  
+    function Remove(){
+        var removethis=document.querySelector("li")
+        removethis.innerHTML=""
+    }
+
+</script>
+
+</html>
